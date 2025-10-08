@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Child Growth Tips</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>20 Tips for Child Development</h1>
+
+    <ul class="tips-list">
+        <li>Ensure balanced nutrition daily.</li>
+        <li>Encourage regular physical activity.</li>
+        <li>Maintain proper sleep schedule.</li>
+        <li>Read and talk to your child daily.</li>
+        <li>Limit screen time and encourage play.</li>
+        <li>Promote good hygiene habits.</li>
+        <li>Schedule regular health checkups.</li>
+        <li>Provide emotional support and praise.</li>
+        <li>Teach social skills and empathy.</li>
+        <li>Be a role model for healthy habits.</li>
+        <li>Encourage creativity through art and music.</li>
+        <li>Allow supervised exploration and curiosity.</li>
+        <li>Teach basic safety and first aid skills.</li>
+        <li>Offer age-appropriate responsibilities.</li>
+        <li>Encourage reading and storytelling.</li>
+        <li>Play interactive and educational games.</li>
+        <li>Celebrate achievements to build confidence.</li>
+        <li>Maintain a positive and patient attitude.</li>
+        <li>Introduce diverse foods to expand palate.</li>
+        <li>Spend quality family time daily.</li>
+    </ul>
+
+    <!-- Ask a Question Section -->
+    <div class="ask-section">
+        <h2>Ask About Your Child’s Development</h2>
+        <textarea id="growthQuestion" placeholder="Type your question here..." rows="4" style="width:100%; padding:10px; border-radius:5px;"></textarea>
+        <button onclick="askGrowthQuestion()">Ask</button>
+        <div id="growthAnswer" class="answer-box"></div>
+    </div>
+
+    <!-- Next Button -->
+    <button class="growth-btn" onclick="location.href='thankyou.html'">Next</button>
+
+<script>
+// Ask Question Function
+function askGrowthQuestion() {
+    const question = document.getElementById("growthQuestion").value.trim();
+    const answerBox = document.getElementById("growthAnswer");
+
+    if(!question) {
+        alert("Please type your question");
+        return;
+    }
+
+    // Demo response
+    const response = `Thank you for your question! For children aged 6 months to 7 years, ensure they have a balanced diet, adequate sleep, physical activity, and emotional support for proper development.`;
+
+    // Display Q&A
+    answerBox.innerHTML = `<p><strong>Q:</strong> ${question}</p><p><strong>A:</strong> ${response}</p>`;
+
+    // Save Q&A to localStorage
+    let history = JSON.parse(localStorage.getItem("growthQA") || "[]");
+    history.push({question: question, answer: response});
+    localStorage.setItem("growthQA", JSON.stringify(history));
+
+    // Clear textarea
+    document.getElementById("growthQuestion").value = "";
+}
+</script>
+</body>
+</html>
